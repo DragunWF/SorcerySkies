@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MainSceneUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private TextMeshProUGUI _scoreText;
+    private TextMeshProUGUI _livesText;
+
+    private void Awake()
     {
-        
+        _scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        _livesText = GameObject.Find("LivesText").GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
     }
 }
