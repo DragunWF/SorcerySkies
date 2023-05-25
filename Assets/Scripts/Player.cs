@@ -6,23 +6,19 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private bool _isFacingRight = true;
-    private int _speed = 5;
+    private float _speed = 5;
+    private float _jumpForce = 7.5f;
     private Vector2 _rawInput;
 
     private Animator _animator;
     private Rigidbody2D _rigidbody;
-    private CapsuleCollider2D _collider;
+    private BoxCollider2D _collider;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<CapsuleCollider2D>();
-    }
-
-    private void Start()
-    {
-
+        _collider = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -37,7 +33,11 @@ public class Player : MonoBehaviour
 
     private void OnJump()
     {
-
+        if (_collider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            _rigidbody.velocity += new Vector2(_rigidbody.velocity.x, _jumpForce);
+            // _audioPlayer.PlayJump();
+        }
     }
 
     private void FlipSprite(bool isMoving)
