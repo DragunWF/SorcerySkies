@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     private bool _isFacingRight = true;
     private float _speed = 5;
-    private float _jumpForce = 7.5f;
+    private float _jumpForce = 11.5f;
     private Vector2 _rawInput;
 
     private Animator _animator;
