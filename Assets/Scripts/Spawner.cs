@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     List<Vector2> spawnPoints = new List<Vector2>();
+    private float spawnSpeed = 2.5f;
 
     private void Awake()
     {
@@ -24,5 +25,22 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
 
+    }
+
+    private Vector2 ChooseRandomPoint()
+    {
+        return spawnPoints[Random.Range(0, spawnPoints.Count)];
+    }
+
+    private IEnumerator SpawnProjectiles()
+    {
+        const float spawnDelay = 1.5f;
+        yield return new WaitForSeconds(spawnDelay);
+
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnSpeed);
+            // Instantiate()
+        }
     }
 }
