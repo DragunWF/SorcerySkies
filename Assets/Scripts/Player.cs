@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    private int _lives = 2;
+
     private bool _isFacingRight = true;
     private float _speed = 5;
     private float _jumpForce = 11.5f;
@@ -13,6 +15,12 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody;
     private BoxCollider2D _collider;
+
+    public void DamagePlayer()
+    {
+        _lives--;
+        // add sound effects
+    }
 
     private void Awake()
     {
@@ -59,5 +67,10 @@ public class Player : MonoBehaviour
 
         _animator.SetBool("Moving", Mathf.Abs(_rigidbody.velocity.x) > Mathf.Epsilon);
         FlipSprite(Mathf.Abs(speed) > Mathf.Epsilon);
+    }
+
+    private void Death()
+    {
+
     }
 }
