@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    List<Vector2> spawnPoints = new List<Vector2>();
+
+    private void Awake()
     {
-        
+        int index = 1;
+        GameObject spawnPoint;
+        do
+        {
+            spawnPoint = GameObject.Find(string.Format("Point_{0}", index));
+            spawnPoints.Add(spawnPoint.transform.position);
+            index++;
+        } while (spawnPoint != null);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+
     }
 }
