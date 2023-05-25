@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 8661176}
   - component: {fileID: 8661175}
   - component: {fileID: 8661174}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ForegroundTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2686,6 +2686,10 @@ PrefabInstance:
     - target: {fileID: 2083335334957222648, guid: 944f4dc18c0ae46489bc7b4c070682ef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2083335334957222651, guid: 944f4dc18c0ae46489bc7b4c070682ef, type: 3}
+      propertyPath: m_GravityScale
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 944f4dc18c0ae46489bc7b4c070682ef, type: 3}
