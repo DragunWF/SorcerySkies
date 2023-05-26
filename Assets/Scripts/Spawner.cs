@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private List<Transform> _spawnPoints = new List<Transform>();
     private float _spawnSpeed = 2.5f;
-    private GameObject[] hostileProjectiles;
-    private GameObject[] friendlyProjectiles;
+    private int[] _LOOT_SPAWN_TIME = { 8, 15 };
+    private int _lootSpawnInterval;
+
+    private List<Transform> _spawnPoints = new List<Transform>();
+    private GameObject[] _damageProjectiles;
+    private GameObject[] _lootProjectiles;
 
     private void Awake()
     {
@@ -23,11 +26,11 @@ public class Spawner : MonoBehaviour
             index++;
         }
 
-        hostileProjectiles = new GameObject[] {
+        _damageProjectiles = new GameObject[] {
             (GameObject) Resources.Load("Prefabs/Fireball"),
             (GameObject) Resources.Load("Prefabs/Spike"),
         };
-        friendlyProjectiles = new GameObject[] {
+        _lootProjectiles = new GameObject[] {
             (GameObject) Resources.Load("Prefabs/Diamond"),
             (GameObject) Resources.Load("Prefabs/Coin"),
         };
@@ -35,6 +38,7 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
+        _lootSpawnInterval = Random.Range(_LOOT_SPAWN_TIME[0], _LOOT_SPAWN_TIME[1]);
         StartCoroutine(SpawnProjectiles());
     }
 
@@ -43,9 +47,14 @@ public class Spawner : MonoBehaviour
         return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
     }
 
-    private GameObject ChooseRandomProjectile()
+    private GameObject ChooseRandomProjectile(bool isLoot)
     {
-        return hostileProjectiles[Random.Range(0, hostileProjectiles.Length)];
+        GameObject[] projectiles = isLoot ? _lootProjectiles : _damageProjectiles;
+        if (isLoot)
+        {
+            _lootSpawnInterval = Random.Range(_LOOT_SPAWN_TIME[0], _LOOT_SPAWN_TIME[1]);
+        }
+        return projectiles[Random.Range(0, projectiles.Length)];
     }
 
     private IEnumerator SpawnProjectiles()
@@ -53,10 +62,13 @@ public class Spawner : MonoBehaviour
         const float spawnDelay = 1.5f;
         yield return new WaitForSeconds(spawnDelay);
 
+        int spawnCount = 0;
         while (true)
         {
             yield return new WaitForSeconds(_spawnSpeed);
-            Instantiate(ChooseRandomProjectile(), ChooseRandomPoint());
+            bool spawnLoot = spawnCount % _lootSpawnInterval == 0;
+            Instantiate(ChooseRandomProjectile(spawnLoot), ChooseRandomPoint());
+            spawnCount++;
         }
     }
 }
