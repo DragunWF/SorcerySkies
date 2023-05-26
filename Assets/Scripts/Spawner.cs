@@ -6,7 +6,8 @@ public class Spawner : MonoBehaviour
 {
     List<Transform> spawnPoints = new List<Transform>();
     private float spawnSpeed = 2.5f;
-    private GameObject[] projectiles;
+    private GameObject[] hostileProjectiles;
+    private GameObject[] friendlyProjectiles;
 
     private void Awake()
     {
@@ -22,8 +23,14 @@ public class Spawner : MonoBehaviour
             index++;
         }
 
-        projectiles = new GameObject[] {
-            (GameObject) Resources.Load("")
+        hostileProjectiles = new GameObject[] {
+            (GameObject) Resources.Load("Prefabs/Fireball"),
+            (GameObject) Resources.Load("Prefabs/Spike"),
+
+        };
+        friendlyProjectiles = new GameObject[] {
+            (GameObject) Resources.Load("Prefabs/Diamond"),
+            (GameObject) Resources.Load("Prefabs/Coin"),
         };
     }
 
@@ -39,7 +46,7 @@ public class Spawner : MonoBehaviour
 
     private GameObject ChooseRandomProjectile()
     {
-        return projectiles[Random.Range(0, projectiles.Length)];
+        return hostileProjectiles[Random.Range(0, hostileProjectiles.Length)];
     }
 
     private IEnumerator SpawnProjectiles()
