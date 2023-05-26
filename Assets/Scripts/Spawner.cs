@@ -36,6 +36,11 @@ public class Spawner : MonoBehaviour
             (GameObject) Resources.Load("Prefabs/Diamond"),
             (GameObject) Resources.Load("Prefabs/Coin"),
         };
+
+        if (titleScreenMode)
+        {
+            _spawnSpeed = 1.8f;
+        }
     }
 
     private void Start()
