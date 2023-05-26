@@ -5,11 +5,30 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
     private int _score = 0;
+    private int _highScore = 0;
+    private bool _newHighScore = false;
     private int _difficultyLevel = 1;
     private MainSceneUI mainSceneUI;
 
     public int getScore() => _score;
+    public int getHighScore() => _highScore;
     public int getDifficultyLevel() => _difficultyLevel;
+
+    public void ResetState()
+    {
+        _score = 0;
+        _difficultyLevel = 0;
+        _newHighScore = false;
+    }
+
+    public void SaveScore()
+    {
+        if (_score > _highScore)
+        {
+            _highScore = _score;
+            _newHighScore = true;
+        }
+    }
 
     public void IncreaseScore(int addition)
     {
