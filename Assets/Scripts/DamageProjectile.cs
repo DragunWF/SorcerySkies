@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageProjectile : Projectile
 {
-    private void Awake()
+    private void Start()
     {
         if (tag == "Fireball")
         {
