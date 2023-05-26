@@ -21,4 +21,23 @@ public class GameState : MonoBehaviour
     {
         mainSceneUI = FindObjectOfType<MainSceneUI>();
     }
+
+    private void Start()
+    {
+        StartCoroutine(GainScoreOverTime());
+    }
+
+    private IEnumerator GainScoreOverTime()
+    {
+        const float delay = 0.5f;
+        yield return new WaitForSeconds(delay);
+
+        const int scoreGainPerInterval = 1;
+        const float secondsPerPoint = 1;
+        while (true)
+        {
+            IncreaseScore(scoreGainPerInterval);
+            yield return new WaitForSeconds(secondsPerPoint);
+        }
+    }
 }
