@@ -15,10 +15,12 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody;
     private BoxCollider2D _collider;
+    private MainSceneUI _mainSceneUI;
 
     public void DamagePlayer()
     {
         _lives--;
+        _mainSceneUI.UpdateLivesText(_lives);
         // add sound effects
         if (_lives == 1)
         {
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
+        _mainSceneUI = FindObjectOfType<MainSceneUI>();
     }
 
     private void Update()
