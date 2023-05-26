@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    List<Vector2> spawnPoints = new List<Vector2>();
+    List<Transform> spawnPoints = new List<Transform>();
     private float spawnSpeed = 2.5f;
+    private GameObject[] projectiles;
 
     private void Awake()
     {
@@ -17,19 +18,28 @@ public class Spawner : MonoBehaviour
             {
                 break;
             }
-            spawnPoints.Add(spawnPoint.transform.position);
+            spawnPoints.Add(spawnPoint.transform);
             index++;
         }
+
+        projectiles = new GameObject[] {
+            (GameObject) Resources.Load("")
+        };
     }
 
-    private void Update()
+    private void Start()
     {
-
+        StartCoroutine(SpawnProjectiles());
     }
 
-    private Vector2 ChooseRandomPoint()
+    private Transform ChooseRandomPoint()
     {
         return spawnPoints[Random.Range(0, spawnPoints.Count)];
+    }
+
+    private GameObject ChooseRandomProjectile()
+    {
+        return projectiles[Random.Range(0, projectiles.Length)];
     }
 
     private IEnumerator SpawnProjectiles()
@@ -40,7 +50,7 @@ public class Spawner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnSpeed);
-            // Instantiate()
+            // Instantiate(ChooseRandomProjectile(), ChooseRandomPoint());
         }
     }
 }
