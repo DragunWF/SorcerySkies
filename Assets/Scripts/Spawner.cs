@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    List<Transform> spawnPoints = new List<Transform>();
-    private float spawnSpeed = 2.5f;
+    private List<Transform> _spawnPoints = new List<Transform>();
+    private float _spawnSpeed = 2.5f;
     private GameObject[] hostileProjectiles;
     private GameObject[] friendlyProjectiles;
 
@@ -19,14 +19,13 @@ public class Spawner : MonoBehaviour
             {
                 break;
             }
-            spawnPoints.Add(spawnPoint.transform);
+            _spawnPoints.Add(spawnPoint.transform);
             index++;
         }
 
         hostileProjectiles = new GameObject[] {
             (GameObject) Resources.Load("Prefabs/Fireball"),
             (GameObject) Resources.Load("Prefabs/Spike"),
-
         };
         friendlyProjectiles = new GameObject[] {
             (GameObject) Resources.Load("Prefabs/Diamond"),
@@ -41,7 +40,7 @@ public class Spawner : MonoBehaviour
 
     private Transform ChooseRandomPoint()
     {
-        return spawnPoints[Random.Range(0, spawnPoints.Count)];
+        return _spawnPoints[Random.Range(0, _spawnPoints.Count)];
     }
 
     private GameObject ChooseRandomProjectile()
@@ -56,8 +55,8 @@ public class Spawner : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(spawnSpeed);
-            // Instantiate(ChooseRandomProjectile(), ChooseRandomPoint());
+            yield return new WaitForSeconds(_spawnSpeed);
+            Instantiate(ChooseRandomProjectile(), ChooseRandomPoint());
         }
     }
 }
