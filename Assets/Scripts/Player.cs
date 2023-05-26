@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     public void DamagePlayer()
     {
         _lives--;
+        // add sound effects
         if (_lives == 1)
         {
             // change sprite to spider
@@ -27,7 +28,6 @@ public class Player : MonoBehaviour
         {
             Death();
         }
-        // add sound effects
     }
 
     private void Awake()
