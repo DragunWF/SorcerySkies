@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private float _spawnSpeed = 2.5f;
+    [SerializeField] bool titleScreenMode = false;
+
+    private float _spawnSpeed = 0.25f; // 2.5f base value
     private int[] _LOOT_SPAWN_TIME = { 8, 15 };
     private int _lootSpawnInterval;
 
