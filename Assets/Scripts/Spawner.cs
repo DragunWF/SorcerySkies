@@ -66,7 +66,7 @@ public sealed class Spawner : MonoBehaviour
 
     private IEnumerator SpawnProjectiles()
     {
-        const float spawnDelay = 3.5f;
+        float spawnDelay = titleScreenMode ? 0.5f : 3.5f;
         yield return new WaitForSeconds(spawnDelay);
 
         int spawnCount = 0;
