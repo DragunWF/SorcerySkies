@@ -17,6 +17,7 @@ public sealed class DamageProjectile : Projectile
         if (other.tag == "Player")
         {
             FindObjectOfType<Player>().DamagePlayer();
+            FindObjectOfType<ParticlePlayer>().PlayHit(transform.position);
             Destroy(gameObject);
         }
     }
