@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MainSceneUI : MonoBehaviour
+public sealed class MainSceneUI : MonoBehaviour
 {
     private TextMeshProUGUI _scoreText;
     private TextMeshProUGUI _livesText;

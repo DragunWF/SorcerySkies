@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public sealed class GameManager : MonoBehaviour
 {
     private const int titleScreenSceneIndex = 0;
     private const int mainSceneIndex = 1;

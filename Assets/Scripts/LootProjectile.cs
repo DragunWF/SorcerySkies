@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootProjectile : Projectile
+public sealed class LootProjectile : Projectile
 {
     [SerializeField] int scoreGain;
 

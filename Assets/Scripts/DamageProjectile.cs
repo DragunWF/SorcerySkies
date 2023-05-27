@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageProjectile : Projectile
+public sealed class DamageProjectile : Projectile
 {
     private void Start()
     {

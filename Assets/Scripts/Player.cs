@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public sealed class Player : MonoBehaviour
 {
     private int _lives = 2;
     private bool _isDamageCooldown = false;

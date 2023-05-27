@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : MonoBehaviour
+public sealed class GameState : MonoBehaviour
 {
     private int _score = 0;
     private int _highScore = 0;
