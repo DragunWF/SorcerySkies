@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private int _lives = 2;
+    private bool _isDamageCooldown = false;
 
     private bool _isFacingRight = true;
     private float _speed = 5;
