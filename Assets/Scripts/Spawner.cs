@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] bool titleScreenMode = false;
 
-    private float _spawnSpeed = 0.25f; // 2.5f base value
+    private float _spawnSpeed = 2.25f; // 2.5f base value
     private int[] _LOOT_SPAWN_TIME = { 8, 15 };
     private int _lootSpawnInterval;
 
@@ -66,7 +66,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnProjectiles()
     {
-        const float spawnDelay = 1.5f;
+        const float spawnDelay = 3.5f;
         yield return new WaitForSeconds(spawnDelay);
 
         int spawnCount = 0;
