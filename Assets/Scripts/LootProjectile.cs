@@ -12,6 +12,7 @@ public sealed class LootProjectile : Projectile
         {
             FindObjectOfType<GameState>().IncreaseScore(scoreGain);
             FindObjectOfType<ParticlePlayer>().PlayPickup(transform.position);
+            FindObjectOfType<AudioPlayer>().PlayPickup();
             Destroy(gameObject);
         }
     }
