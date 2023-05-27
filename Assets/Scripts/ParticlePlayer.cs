@@ -2,17 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticlePlayer : MonoBehaviour
+public sealed class ParticlePlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Dictionary<string, GameObject> particles = new Dictionary<string, GameObject>();
+    private const float destroyDelay = 7.5f;
+
+    #region Play Particle Methods
+
+    public void PlayDeath(Vector2 position)
     {
-        
+        SpawnParticle("Death", position);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayHit(Vector2 position)
     {
-        
+        SpawnParticle("Hit", position);
+    }
+
+    public void PlayPickup(Vector2 position)
+    {
+        SpawnParticle("Pickup", position);
+    }
+
+    #endregion
+
+    private void Awake()
+    {
+        particles.Add("Death", Resources.Load("Prefabs/DeathEffect") as GameObject);
+        particles.Add("Pickup", Resources.Load("Prefabs/PickupEffect") as GameObject);
+        particles.Add("Hit", Resources.Load("Prefabs/HitEffect") as GameObject);
+    }
+
+    private void SpawnParticle(string effectName, Vector2 position)
+    {
+        GameObject particle = Instantiate(particles[effectName], position,
+                                          Quaternion.identity);
+        Destroy(particle, destroyDelay);
     }
 }
