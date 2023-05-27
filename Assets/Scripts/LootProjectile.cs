@@ -11,7 +11,7 @@ public sealed class LootProjectile : Projectile
         if (other.tag == "Player")
         {
             FindObjectOfType<GameState>().IncreaseScore(scoreGain);
-            FindObjectOfType<ParticlePlayer>().PlayHit(transform.position);
+            FindObjectOfType<ParticlePlayer>().PlayPickup(transform.position);
             Destroy(gameObject);
         }
     }
