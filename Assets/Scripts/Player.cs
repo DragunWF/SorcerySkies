@@ -16,20 +16,26 @@ public sealed class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody;
     private BoxCollider2D _collider;
+
     private MainSceneUI _mainSceneUI;
+    private AudioPlayer _audioPlayer;
 
     public void DamagePlayer()
     {
-        _lives--;
-        _mainSceneUI.UpdateLivesText(_lives);
-        // add sound effects
-        if (_lives == 1)
+        if (!_isDamageCooldown)
         {
-            // change sprite to spider
-        }
-        else if (_lives <= 0)
-        {
-            Death();
+            _lives--;
+            _mainSceneUI.UpdateLivesText(_lives);
+            if (_lives == 1)
+            {
+                // change sprite to spider
+            }
+            else if (_lives <= 0)
+            {
+                Death();
+                return;
+            }
+            _audioPlayer.PlayDamage();
         }
     }
 
@@ -39,6 +45,7 @@ public sealed class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _mainSceneUI = FindObjectOfType<MainSceneUI>();
+        _audioPlayer = FindObjectOfType<AudioPlayer>();
     }
 
     private void Update()
@@ -56,7 +63,7 @@ public sealed class Player : MonoBehaviour
         if (_collider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             _rigidbody.velocity += new Vector2(_rigidbody.velocity.x, _jumpForce);
-            // _audioPlayer.PlayJump();
+            _audioPlayer.PlayJump();
         }
     }
 
@@ -83,6 +90,7 @@ public sealed class Player : MonoBehaviour
 
     private void Death()
     {
-
+        _audioPlayer.PlayDeath();
+        // add more logic
     }
 }
