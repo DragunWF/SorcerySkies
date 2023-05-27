@@ -39,7 +39,7 @@ public class Spawner : MonoBehaviour
 
         if (titleScreenMode)
         {
-            _spawnSpeed = 1.8f;
+            _spawnSpeed = 0.125f;
         }
     }
 
