@@ -24,9 +24,6 @@ public sealed class RetryMenuUI : MonoBehaviour
                                        Utils.FormatNumber(gameState.getScore()));
         highScoreText.text = string.Format("High Score: {0}",
                                            Utils.FormatNumber(gameState.getHighScore()));
-        if (gameState.isNewHighScore())
-        {
-            // show the new high score text
-        }
+        newHighScoreText.gameObject.SetActive(gameState.isNewHighScore());
     }
 }
