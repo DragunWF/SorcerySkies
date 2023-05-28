@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/HowToPlay.unity
+    guid: d0e3e3412eabbb540957dcd935bf7e96
+  - enabled: 1
+    path: Assets/Scenes/RetryMenu.unity
+    guid: 709b2f8bcf75b24409779dc120250b2d
   m_configObjects: {}
