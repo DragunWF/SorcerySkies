@@ -20,6 +20,7 @@ public sealed class Player : MonoBehaviour
     private MainSceneUI _mainSceneUI;
     private AudioPlayer _audioPlayer;
     private ParticlePlayer _particlePlayer;
+    private FadeToBlack _sceneTransition;
 
     public void DamagePlayer()
     {
@@ -49,6 +50,7 @@ public sealed class Player : MonoBehaviour
         _mainSceneUI = FindObjectOfType<MainSceneUI>();
         _audioPlayer = FindObjectOfType<AudioPlayer>();
         _particlePlayer = FindObjectOfType<ParticlePlayer>();
+        _sceneTransition = FindObjectOfType<FadeToBlack>();
     }
 
     private void Update()
@@ -94,12 +96,7 @@ public sealed class Player : MonoBehaviour
     private void Death()
     {
         _audioPlayer.PlayDeath();
-        StartLevelTransition();
+        _sceneTransition.InitializeFade();
         // add more logic
-    }
-
-    private void StartLevelTransition()
-    {
-
     }
 }
