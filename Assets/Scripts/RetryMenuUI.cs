@@ -20,8 +20,10 @@ public sealed class RetryMenuUI : MonoBehaviour
 
     private void Start()
     {
-        scoreText.text = string.Format("Score: {0}", gameState.getScore());
-        highScoreText.text = string.Format("High Score: {0}", gameState.getHighScore());
+        scoreText.text = string.Format("Score: {0}",
+                                       Utils.FormatNumber(gameState.getScore()));
+        highScoreText.text = string.Format("High Score: {0}",
+                                           Utils.FormatNumber(gameState.getHighScore()));
         if (gameState.isNewHighScore())
         {
             // show the new high score text
