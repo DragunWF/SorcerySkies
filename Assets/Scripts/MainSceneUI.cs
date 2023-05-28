@@ -20,8 +20,8 @@ public sealed class MainSceneUI : MonoBehaviour
 
     private void Awake()
     {
-        _scoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-        _livesText = GameObject.Find("LivesText").GetComponent<TextMeshProUGUI>();
+        _scoreText = Utils.GetTextObj("ScoreText");
+        _livesText = Utils.GetTextObj("LivesText");
     }
 
     private string GetFormatText(string header, int value)
