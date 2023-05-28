@@ -11,14 +11,14 @@ public sealed class Utils : MonoBehaviour
         return GameObject.Find(gameObjectName).GetComponent<TextMeshProUGUI>();
     }
 
-    public static string FormatNumber(int points)
+    public static string FormatNumber(int number)
     {
-        if (points < 1000)
+        if (number < 1000)
         {
-            return points.ToString();
+            return number.ToString();
         }
 
-        string formatted = "", str = points.ToString();
+        string formatted = "", str = number.ToString();
         for (int i = 1, n = str.Length; i <= n; i++)
         {
             formatted += str[str.Length - i];
