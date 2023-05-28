@@ -5,21 +5,23 @@ using UnityEngine.SceneManagement;
 
 public sealed class GameManager : MonoBehaviour
 {
-    private const int titleScreenSceneIndex = 0;
-    private const int mainSceneIndex = 1;
+    private Dictionary<string, int> scenes = new Dictionary<string, int>();
 
-    public void LoadMainScene()
+    private void Awake()
     {
-        LoadScene(mainSceneIndex);
+        scenes.Add("Main", 0);
+        scenes.Add("TitleScreen", 1);
+        scenes.Add("HowToPlay", 2);
+        scenes.Add("RetryMenu", 3);
     }
 
-    public void LoadTitleScreen()
-    {
-        LoadScene(titleScreenSceneIndex);
-    }
+    #region Load Methods
 
-    private void LoadScene(int index)
-    {
-        SceneManager.LoadScene(index);
-    }
+    public void LoadMainScene() => LoadScene(scenes["Main"]);
+    public void LoadTitleScreen() => LoadScene(scenes["TitleScreen"]);
+    public void LoadHowToPlay() => LoadScene(scenes["HowToPlay"]);
+    public void LoadRetryMenu() => LoadScene(scenes["RetryMenu"]);
+    private void LoadScene(int index) => SceneManager.LoadScene(index);
+
+    #endregion
 }
