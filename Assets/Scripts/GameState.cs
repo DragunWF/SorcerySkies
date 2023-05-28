@@ -8,7 +8,9 @@ public sealed class GameState : MonoBehaviour
     private int _highScore = 0;
     private bool _newHighScore = false;
     private int _difficultyLevel = 1;
+
     private MainSceneUI mainSceneUI;
+    private static GameState instance;
 
     #region Getter Methods
 
@@ -43,12 +45,27 @@ public sealed class GameState : MonoBehaviour
 
     private void Awake()
     {
+        ManageSingleton();
         mainSceneUI = FindObjectOfType<MainSceneUI>();
     }
 
     private void Start()
     {
         StartCoroutine(GainScoreOverTime());
+    }
+
+    private void ManageSingleton()
+    {
+        if (instance != null)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     private IEnumerator GainScoreOverTime()
