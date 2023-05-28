@@ -13,6 +13,7 @@ public sealed class GameState : MonoBehaviour
     public int getScore() => _score;
     public int getHighScore() => _highScore;
     public int getDifficultyLevel() => _difficultyLevel;
+    public bool isNewHighScore() => _newHighScore;
 
     public void ResetState()
     {
