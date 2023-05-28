@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public sealed class FadeToBlack : MonoBehaviour
 {
+    /*
+        This script requires you to create an Image from 
+        the UI menu then set its color to black and its 
+        alpha value to 0.
+    */
+
     private bool transitionInitialized;
     private const float transitionDelay = 0.25f;
     private Image blackScreen;
