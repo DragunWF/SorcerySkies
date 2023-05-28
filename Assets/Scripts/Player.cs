@@ -19,6 +19,7 @@ public sealed class Player : MonoBehaviour
 
     private MainSceneUI _mainSceneUI;
     private AudioPlayer _audioPlayer;
+    private ParticlePlayer _particlePlayer;
 
     public void DamagePlayer()
     {
@@ -44,8 +45,10 @@ public sealed class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
+
         _mainSceneUI = FindObjectOfType<MainSceneUI>();
         _audioPlayer = FindObjectOfType<AudioPlayer>();
+        _particlePlayer = FindObjectOfType<ParticlePlayer>();
     }
 
     private void Update()
@@ -91,6 +94,12 @@ public sealed class Player : MonoBehaviour
     private void Death()
     {
         _audioPlayer.PlayDeath();
+        StartLevelTransition();
         // add more logic
+    }
+
+    private void StartLevelTransition()
+    {
+
     }
 }
