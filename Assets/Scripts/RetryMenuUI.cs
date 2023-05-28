@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class RetryMenuUI : MonoBehaviour
+public sealed class RetryMenuUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private TextMeshProUGUI scoreText;
+    private TextMeshProUGUI highScoreText;
+    private TextMeshProUGUI newHighScoreText;
+    private GameState gameState;
+
+    private void Awake()
     {
-        
+        scoreText = Utils.GetTextObj("ScoreText");
+        highScoreText = Utils.GetTextObj("HighScoreText");
+        newHighScoreText = Utils.GetTextObj("NewHighScoreText");
+        gameState = FindObjectOfType<GameState>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        scoreText.text = string.Format("Score: {0}", gameState.getScore());
+        highScoreText.text = string.Format("High Score: {0}", gameState.getHighScore());
+        if (gameState.isNewHighScore())
+        {
+            // show the new high score text
+        }
     }
 }
