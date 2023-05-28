@@ -10,10 +10,14 @@ public sealed class GameState : MonoBehaviour
     private int _difficultyLevel = 1;
     private MainSceneUI mainSceneUI;
 
+    #region Getter Methods
+
     public int getScore() => _score;
     public int getHighScore() => _highScore;
     public int getDifficultyLevel() => _difficultyLevel;
     public bool isNewHighScore() => _newHighScore;
+
+    #endregion
 
     public void ResetState()
     {
