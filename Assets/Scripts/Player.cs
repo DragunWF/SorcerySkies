@@ -25,7 +25,11 @@ public sealed class Player : MonoBehaviour
     private FadeToBlack _sceneTransition;
     private GameState _gameState;
 
+    #region Getter Methods
+
     public float GetDamageCooldown() => _damageCooldownTime;
+
+    #endregion
 
     public void DamagePlayer()
     {
