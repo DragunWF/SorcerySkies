@@ -4,15 +4,24 @@ using UnityEngine;
 
 public sealed class FlashEffect : MonoBehaviour
 {
-    [Tooltip("Flash Type")]
-    [SerializeField] bool isUsingPlayer;
+    /*
+        This script requires a flash material placed at 
+        "Assets/Resources/Materials".
+    */
 
     private SpriteRenderer spriteRenderer;
     private Material flashMaterial;
     private Material originalMaterial;
+    private Player player;
 
     private Coroutine flashRoutine;
     private float effectDuration;
+
+    public void Flash()
+    {
+        flashRoutine = StartCoroutine(StartFlashEffect());
+        Invoke("StopFlash", effectDuration);
+    }
 
     private void Awake()
     {
@@ -22,16 +31,8 @@ public sealed class FlashEffect : MonoBehaviour
 
     private void Start()
     {
-        effectDuration = isUsingPlayer ?
-                         GetComponent<Player>().DamageCooldown :
-                         GetComponent<Enemy>().DamageCooldown;
+        effectDuration = player.GetDamageCooldown();
         originalMaterial = spriteRenderer.material;
-    }
-
-    public void Flash()
-    {
-        flashRoutine = StartCoroutine(StartFlashEffect());
-        Invoke("StopFlash", effectDuration);
     }
 
     private void StopFlash()
