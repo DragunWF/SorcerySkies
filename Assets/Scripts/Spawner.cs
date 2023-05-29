@@ -7,7 +7,7 @@ public sealed class Spawner : MonoBehaviour
     [SerializeField] bool titleScreenMode = false;
 
     private float _spawnSpeed;
-    private int[] _LOOT_SPAWN_TIME = { 8, 15 };
+    private int[] _lootSpawnTime = { 8, 15 };
     private int _lootSpawnInterval;
 
     private List<Transform> _spawnPoints = new List<Transform>();
@@ -48,7 +48,7 @@ public sealed class Spawner : MonoBehaviour
 
     private void Start()
     {
-        _lootSpawnInterval = Random.Range(_LOOT_SPAWN_TIME[0], _LOOT_SPAWN_TIME[1]);
+        _lootSpawnInterval = Random.Range(_lootSpawnTime[0], _lootSpawnTime[1]);
         StartCoroutine(SpawnProjectiles());
     }
 
@@ -62,7 +62,7 @@ public sealed class Spawner : MonoBehaviour
         GameObject[] projectiles = isLoot ? _lootProjectiles : _damageProjectiles;
         if (isLoot)
         {
-            _lootSpawnInterval = Random.Range(_LOOT_SPAWN_TIME[0], _LOOT_SPAWN_TIME[1]);
+            _lootSpawnInterval = Random.Range(_lootSpawnTime[0], _lootSpawnTime[1]);
         }
         return projectiles[Random.Range(0, projectiles.Length)];
     }
