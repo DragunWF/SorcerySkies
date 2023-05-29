@@ -14,10 +14,11 @@ public sealed class Spawner : MonoBehaviour
     private GameObject[] _damageProjectiles;
     private GameObject[] _lootProjectiles;
 
-    public void UpdateSpawnSpeed(int value) => _spawnSpeed = value;
+    public void UpdateSpawnSpeed(float value) => _spawnSpeed = value;
 
     private void Awake()
     {
+        // Fill spawn points list
         int index = 1;
         while (true)
         {
