@@ -38,6 +38,7 @@ public sealed class Player : MonoBehaviour
             _lives--;
             _flashEffect.Flash();
             _mainSceneUI.UpdateLivesText(_lives);
+            _audioPlayer.PlayDamage();
             if (_lives == 1)
             {
                 // change sprite to spider
@@ -47,7 +48,6 @@ public sealed class Player : MonoBehaviour
                 Death();
                 return;
             }
-            _audioPlayer.PlayDamage();
         }
     }
 
