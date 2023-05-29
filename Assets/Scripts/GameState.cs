@@ -7,7 +7,7 @@ public sealed class GameState : MonoBehaviour
     private int _score = 0;
     private int _highScore = 0;
     private bool _newHighScore = false;
-    private int _difficultyLevel = 1;
+    private int _difficultyLevel = 0;
     private bool isPlayerAlive = true;
 
     private MainSceneUI _mainSceneUI;
@@ -36,7 +36,7 @@ public sealed class GameState : MonoBehaviour
     public void ResetState()
     {
         _score = 0;
-        _difficultyLevel = 1;
+        _difficultyLevel = 0;
         _newHighScore = false;
     }
 
