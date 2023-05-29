@@ -61,6 +61,11 @@ public sealed class Player : MonoBehaviour
         _gameState = FindObjectOfType<GameState>();
     }
 
+    private void Start()
+    {
+        _gameState.StartState();
+    }
+
     private void Update()
     {
         Move();

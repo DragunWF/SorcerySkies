@@ -8,7 +8,6 @@ public sealed class GameState : MonoBehaviour
     private int _highScore = 0;
     private bool _newHighScore = false;
     private int _difficultyLevel = 0;
-    private bool isPlayerAlive = true;
 
     private MainSceneUI _mainSceneUI;
     private DifficultyScaling _difficultyScaling;
@@ -30,7 +29,7 @@ public sealed class GameState : MonoBehaviour
 
     public void StopScore()
     {
-        isPlayerAlive = false;
+        StopAllCoroutines();
     }
 
     public void ResetState()
@@ -55,12 +54,7 @@ public sealed class GameState : MonoBehaviour
         _mainSceneUI.UpdateScoreText(_score);
     }
 
-    private void Awake()
-    {
-        ManageSingleton();
-    }
-
-    private void Start()
+    public void StartState()
     {
         _mainSceneUI = FindObjectOfType<MainSceneUI>();
         _difficultyScaling = FindObjectOfType<DifficultyScaling>();
@@ -70,6 +64,11 @@ public sealed class GameState : MonoBehaviour
         {
             StartCoroutine(GainScoreOverTime());
         }
+    }
+
+    private void Awake()
+    {
+        ManageSingleton();
     }
 
     private void ManageSingleton()
@@ -93,7 +92,7 @@ public sealed class GameState : MonoBehaviour
 
         const int scoreGainPerInterval = 1;
         const float secondsPerPoint = 1;
-        while (isPlayerAlive)
+        while (true)
         {
             IncreaseScore(scoreGainPerInterval);
             yield return new WaitForSeconds(secondsPerPoint);
