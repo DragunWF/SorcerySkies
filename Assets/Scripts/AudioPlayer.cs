@@ -18,7 +18,7 @@ public sealed class AudioPlayer : MonoBehaviour
 
     private void Awake()
     {
-        clips.Add("Death", Resources.Load("Audio/Shoot") as AudioClip);
+        clips.Add("Death", Resources.Load("Audio/Death") as AudioClip);
         volumes.Add("Death", 0.75f);
 
         clips.Add("Jump", Resources.Load("Audio/Jump") as AudioClip);
@@ -28,7 +28,7 @@ public sealed class AudioPlayer : MonoBehaviour
         volumes.Add("Pickup", 0.75f);
 
         clips.Add("Damage", Resources.Load("Audio/Damage") as AudioClip);
-        volumes.Add("Damage", 0.55f);
+        volumes.Add("Damage", 0.95f);
     }
 
     private void PlayClip(string fileName)
