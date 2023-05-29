@@ -27,6 +27,7 @@ public sealed class FlashEffect : MonoBehaviour
     {
         flashMaterial = Resources.Load("Materials/Flash Material") as Material;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        player = GetComponent<Player>();
     }
 
     private void Start()
