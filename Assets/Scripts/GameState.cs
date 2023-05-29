@@ -16,10 +16,10 @@ public sealed class GameState : MonoBehaviour
 
     #region Getter Methods
 
-    public int getScore() => _score;
-    public int getHighScore() => _highScore;
-    public int getDifficultyLevel() => _difficultyLevel;
-    public bool isNewHighScore() => _newHighScore;
+    public int GetScore() => _score;
+    public int GetHighScore() => _highScore;
+    public int GetDifficultyLevel() => _difficultyLevel;
+    public bool IsNewHighScore() => _newHighScore;
 
     #endregion
 
