@@ -7,6 +7,7 @@ public sealed class Player : MonoBehaviour
 {
     private int _lives = 2;
     private bool _isDamageCooldown = false;
+    private const float _damageCooldownTime = 1.5f;
 
     private bool _isFacingRight = true;
     private float _speed = 5;
@@ -16,11 +17,14 @@ public sealed class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rigidbody;
     private BoxCollider2D _collider;
+    private FlashEffect _flashEffect;
 
     private MainSceneUI _mainSceneUI;
     private AudioPlayer _audioPlayer;
     private ParticlePlayer _particlePlayer;
     private FadeToBlack _sceneTransition;
+
+    public float GetDamageCooldown() => _damageCooldownTime;
 
     public void DamagePlayer()
     {
@@ -46,6 +50,7 @@ public sealed class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
+        _flashEffect = GetComponent<FlashEffect>();
 
         _mainSceneUI = FindObjectOfType<MainSceneUI>();
         _audioPlayer = FindObjectOfType<AudioPlayer>();
