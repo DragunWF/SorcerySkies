@@ -10,9 +10,9 @@ public sealed class GameState : MonoBehaviour
     private int _difficultyLevel = 1;
     private bool isPlayerAlive = true;
 
-    private MainSceneUI mainSceneUI;
-    private DifficultyScaling difficultyScaling;
-    private static GameState instance;
+    private MainSceneUI _mainSceneUI;
+    private DifficultyScaling _difficultyScaling;
+    private static GameState _instance;
 
     #region Getter Methods
 
@@ -36,7 +36,7 @@ public sealed class GameState : MonoBehaviour
     public void ResetState()
     {
         _score = 0;
-        _difficultyLevel = 0;
+        _difficultyLevel = 1;
         _newHighScore = false;
     }
 
@@ -52,31 +52,36 @@ public sealed class GameState : MonoBehaviour
     public void IncreaseScore(int addition)
     {
         _score += addition;
-        mainSceneUI.UpdateScoreText(_score);
+        _mainSceneUI.UpdateScoreText(_score);
     }
 
     private void Awake()
     {
         ManageSingleton();
-        mainSceneUI = FindObjectOfType<MainSceneUI>();
-        difficultyScaling = FindObjectOfType<DifficultyScaling>();
     }
 
     private void Start()
     {
-        StartCoroutine(GainScoreOverTime());
+        _mainSceneUI = FindObjectOfType<MainSceneUI>();
+        _difficultyScaling = FindObjectOfType<DifficultyScaling>();
+
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            StartCoroutine(GainScoreOverTime());
+        }
     }
 
     private void ManageSingleton()
     {
-        if (instance != null)
+        if (_instance != null)
         {
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
         else
         {
-            instance = this;
+            _instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
