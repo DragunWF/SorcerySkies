@@ -96,7 +96,8 @@ public sealed class Player : MonoBehaviour
     private void Death()
     {
         _audioPlayer.PlayDeath();
+        _particlePlayer.PlayDeath(transform.position);
         _sceneTransition.InitializeFade();
-        // add more logic
+        gameObject.SetActive(false);
     }
 }
