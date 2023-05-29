@@ -23,6 +23,7 @@ public sealed class Player : MonoBehaviour
     private AudioPlayer _audioPlayer;
     private ParticlePlayer _particlePlayer;
     private FadeToBlack _sceneTransition;
+    private GameState _gameState;
 
     public float GetDamageCooldown() => _damageCooldownTime;
 
@@ -57,6 +58,7 @@ public sealed class Player : MonoBehaviour
         _audioPlayer = FindObjectOfType<AudioPlayer>();
         _particlePlayer = FindObjectOfType<ParticlePlayer>();
         _sceneTransition = FindObjectOfType<FadeToBlack>();
+        _gameState = FindObjectOfType<GameState>();
     }
 
     private void Update()
@@ -103,6 +105,7 @@ public sealed class Player : MonoBehaviour
     {
         _audioPlayer.PlayDeath();
         _particlePlayer.PlayDeath(transform.position);
+        _gameState.SaveScore();
         _sceneTransition.InitializeFade();
         gameObject.SetActive(false);
     }
