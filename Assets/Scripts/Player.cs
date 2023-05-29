@@ -105,7 +105,10 @@ public sealed class Player : MonoBehaviour
     {
         _audioPlayer.PlayDeath();
         _particlePlayer.PlayDeath(transform.position);
+
+        _gameState.StopScore();
         _gameState.SaveScore();
+
         _sceneTransition.InitializeFade();
         gameObject.SetActive(false);
     }
