@@ -2,7 +2,13 @@
 
 ## Description
 
-The game is about a mage dodging fireballs, spikes, and other things falling from the sky.
+Play as a mage in a 2D world, dodging spikes and fireballs falling from the sky while collecting coins and diamonds along the way.
+
+The goal in this game is to survive for as long as you can; this is a bullet hell game. **Difficulty scales**; the longer you survive, the more projectiles spawn in the game over time. Avoid spikes and fireballs; obtain coins and diamonds for extra points.
+
+You can use your **WASD keys or arrow keys to move**.
+
+This game is my submission to [GameDev.tv's 2023 game jam](https://itch.io/jam/gamedevtv-jam-2023).
 
 ## Other
 
