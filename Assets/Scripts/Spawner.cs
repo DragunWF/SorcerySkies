@@ -6,7 +6,7 @@ public sealed class Spawner : MonoBehaviour
 {
     [SerializeField] bool titleScreenMode = false;
 
-    private float _spawnSpeed = 2.25f; // 2.5f base value
+    private float _spawnSpeed;
     private int[] _LOOT_SPAWN_TIME = { 8, 15 };
     private int _lootSpawnInterval;
 
