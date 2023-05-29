@@ -14,6 +14,8 @@ public sealed class Spawner : MonoBehaviour
     private GameObject[] _damageProjectiles;
     private GameObject[] _lootProjectiles;
 
+    public void updateSpawnSpeed(int value) => _spawnSpeed = value;
+
     private void Awake()
     {
         int index = 1;
