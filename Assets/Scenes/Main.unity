@@ -1176,10 +1176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2088206470012122996, guid: 8eb6e5baadc274d47b26df671fb43b31, type: 3}
-      propertyPath: m_Name
-      value: PropsTilemap
-      objectReference: {fileID: 0}
     - target: {fileID: 2587266136246352520, guid: 8eb6e5baadc274d47b26df671fb43b31, type: 3}
       propertyPath: m_Name
       value: World
