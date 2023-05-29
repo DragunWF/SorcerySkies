@@ -29,7 +29,7 @@ public sealed class DifficultyScaling : MonoBehaviour
 
         while (true)
         {
-            _gameState.increaseDifficulty();
+            _gameState.IncreaseDifficulty();
             yield return new WaitForSeconds(_currentTimeToScale);
         }
     }
