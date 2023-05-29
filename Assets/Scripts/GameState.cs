@@ -10,6 +10,7 @@ public sealed class GameState : MonoBehaviour
     private int _difficultyLevel = 1;
 
     private MainSceneUI mainSceneUI;
+    private DifficultyScaling difficultyScaling;
     private static GameState instance;
 
     #region Getter Methods
@@ -20,6 +21,11 @@ public sealed class GameState : MonoBehaviour
     public bool isNewHighScore() => _newHighScore;
 
     #endregion
+
+    public void increaseDifficulty()
+    {
+        _difficultyLevel++;
+    }
 
     public void ResetState()
     {
@@ -47,6 +53,7 @@ public sealed class GameState : MonoBehaviour
     {
         ManageSingleton();
         mainSceneUI = FindObjectOfType<MainSceneUI>();
+        difficultyScaling = FindObjectOfType<DifficultyScaling>();
     }
 
     private void Start()
