@@ -31,6 +31,7 @@ public sealed class Player : MonoBehaviour
         if (!_isDamageCooldown)
         {
             _lives--;
+            _flashEffect.Flash();
             _mainSceneUI.UpdateLivesText(_lives);
             if (_lives == 1)
             {
