@@ -12,7 +12,7 @@ public sealed class FadeToBlack : MonoBehaviour
     */
 
     private bool transitionInitialized;
-    private const float transitionDelay = 0.25f;
+    private const float transitionDelay = 1.35f;
     private Image blackScreen;
 
     private float alphaSlider = 0;
