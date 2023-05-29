@@ -72,5 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Personal files [From DragunWF]
-Publish
+[Pp]ublish
 .DS_Store
