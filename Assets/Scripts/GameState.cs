@@ -8,6 +8,7 @@ public sealed class GameState : MonoBehaviour
     private int _highScore = 0;
     private bool _newHighScore = false;
     private int _difficultyLevel = 1;
+    private bool isPlayerAlive = true;
 
     private MainSceneUI mainSceneUI;
     private DifficultyScaling difficultyScaling;
@@ -22,9 +23,14 @@ public sealed class GameState : MonoBehaviour
 
     #endregion
 
-    public void increaseDifficulty()
+    public void IncreaseDifficulty()
     {
         _difficultyLevel++;
+    }
+
+    public void StopScore()
+    {
+        isPlayerAlive = false;
     }
 
     public void ResetState()
@@ -82,7 +88,7 @@ public sealed class GameState : MonoBehaviour
 
         const int scoreGainPerInterval = 1;
         const float secondsPerPoint = 1;
-        while (true)
+        while (isPlayerAlive)
         {
             IncreaseScore(scoreGainPerInterval);
             yield return new WaitForSeconds(secondsPerPoint);
