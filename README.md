@@ -8,7 +8,11 @@ The goal in this game is to survive for as long as you can; this is a bullet hel
 
 You can use your **WASD keys or arrow keys to move**.
 
-This game is my submission to [GameDev.tv's 2023 game jam](https://itch.io/jam/gamedevtv-jam-2023).
+This game is my submission to [GameDev.tv's 2023 game jam](https://itch.io/jam/gamedevtv-jam-2023/rate/2093315).
+
+## Attributions
+
+- [Background Music](https://opengameart.org/content/a-journey-awaits)
 
 ## Other
 
